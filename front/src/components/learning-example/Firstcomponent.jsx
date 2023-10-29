@@ -3,3 +3,9 @@ export default function FirstComponent(){
       <div>First Component</div>
     );
   }
+
+export function SecondComponent() {
+  return(
+    <div>SecondComponent</div>
+  );
+}

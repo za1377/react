@@ -1,13 +1,10 @@
 import './App.css';
-import FirstComponent from './components/learning-example/Firstcomponent';
-import ThirdComponent from './components/learning-example/ThirdComponent';
+import LearningComponent from './components/learning-example/LearningComponent';
 
 function App() {
   return (
     <div className="App">
-      My Todo Application
-      <FirstComponent></FirstComponent>
-      <ThirdComponent></ThirdComponent>
+      <LearningComponent></LearningComponent>
     </div>
   );
 }

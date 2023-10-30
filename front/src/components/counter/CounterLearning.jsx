@@ -17,15 +17,15 @@ export default function Counter() {
     return(
         <>
             <div className="count">{count}</div>
-            <CounterLearning />
-            <CounterLearning by={2}/>
-            <CounterLearning by={5}/>
+            <CounterLearning IncreaseMethod={Increase} DecreaseMethod={Decrease}/>
+            <CounterLearning by={2} IncreaseMethod={Increase} DecreaseMethod={Decrease}/>
+            <CounterLearning by={5} IncreaseMethod={Increase} DecreaseMethod={Decrease}/>
         </>
     )
 }
 
 
-function CounterLearning({by}) {
+function CounterLearning({by, IncreaseMethod, DecreaseMethod}) {
 
     const buttonStyle = {
         fontSize: "16px",
@@ -41,6 +41,7 @@ function CounterLearning({by}) {
 
     function IncreaseButton() {
         setCount( count + by)
+    
     }
 
     function DecreaseButton() {

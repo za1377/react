@@ -1,10 +1,10 @@
 import './App.css';
-import LearningComponent from './components/learning-example/LearningComponent';
+import CounterLearning from './components/counter/CounterLearning';
 
 function App() {
   return (
     <div className="App">
-      <LearningComponent></LearningComponent>
+      <CounterLearning></CounterLearning>
     </div>
   );
 }

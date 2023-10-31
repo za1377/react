@@ -1,31 +1,7 @@
-import { useState } from "react";
 import PropTypes from 'prop-types';
-import "./Counter.css"
+import "./Counter.css";
 
-export default function Counter() {
-
-    const [count, setCount] = useState(0);
-
-    function Increase(by) {
-        setCount( count + by)
-    }
-
-    function Decrease(by) {
-        setCount( count - by)
-    }
-
-    return(
-        <>
-            <div className="count">{count}</div>
-            <CounterLearning IncreaseMethod={Increase} DecreaseMethod={Decrease}/>
-            <CounterLearning by={2} IncreaseMethod={Increase} DecreaseMethod={Decrease}/>
-            <CounterLearning by={5} IncreaseMethod={Increase} DecreaseMethod={Decrease}/>
-        </>
-    )
-}
-
-
-function CounterLearning({by, IncreaseMethod, DecreaseMethod}) {
+export default function CounterLearning({by, IncreaseMethod, DecreaseMethod}) {
 
     const buttonStyle = {
         fontSize: "16px",
@@ -37,22 +13,21 @@ function CounterLearning({by, IncreaseMethod, DecreaseMethod}) {
         borderRadius: "30px"
     };
 
-    const [count, setCount] = useState(0);
-
-    function IncreaseButton() {
-        setCount( count + by)
+    // function IncreaseButton() {
+    //     IncreaseMethod(by)
     
-    }
+    // }
 
-    function DecreaseButton() {
-        setCount( count - by)
-    }
+    // function DecreaseButton() {
+    //     DecreaseMethod(by)
+    // }
 
     return(
         <>
-            <div className="count">{count}</div>
-            <button style={buttonStyle} onClick={IncreaseButton}>+{by}</button>
-            <button style={buttonStyle} onClick={DecreaseButton}>-{by}</button>
+            <div>
+                <button style={buttonStyle} onClick={() => IncreaseMethod(by)}>+{by}</button>
+                <button style={buttonStyle} onClick={() => DecreaseMethod(by)}>-{by}</button>
+            </div>
         </>
     )
 }

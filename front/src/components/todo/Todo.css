@@ -2,3 +2,10 @@ input , button , label {
     margin: 15px;
     padding: 5px;
 }
+
+footer{
+    bottom: 0px;
+    position: absolute;
+    width: 90%;
+    height: 40px;
+}

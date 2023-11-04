@@ -6,7 +6,7 @@ function HeaderComponent() {
     const authContext = useAuth()
 
     function logout() {
-        authContext.setIsAuthenticated(false)
+        authContext.logout()
     }
 
     return(

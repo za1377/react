@@ -6,7 +6,6 @@ function LoginComponent() {
     const [username, setUsername] = useState("admin")
     const [password, setPassword] = useState("123456")
 
-    const [successMessage, setSuccessMessage] = useState(false)
     const [errorMessage, setErrorMessage] = useState(false)
 
     const navigate = useNavigate()
@@ -23,11 +22,9 @@ function LoginComponent() {
     }
 
     function handelLogin() {
-        if(username === 'admin' && password === 'pass') {
-            authContext.setIsAuthenticated(true)
+        if(authContext.login(username, password)) {
             navigate(`/welcome/${username}`)
         }else{
-            setSuccessMessage(false)
             setErrorMessage(true)
         }
     }
@@ -35,7 +32,6 @@ function LoginComponent() {
     return(
         <div>
             <h1>Time to login!</h1>
-            {successMessage && <div className='successMessage'>Authenticated successfuly!</div>}
             {errorMessage && <div className='errorMessage'>Authentication failed. Please check your credentials</div>}
             <div>
                 <label>Username</label>

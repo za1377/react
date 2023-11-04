@@ -7,7 +7,7 @@ export const useAuth = () => useContext(AuthContext)
 export default function AuthProvider( {children} ) {
 
     function login(username, password) {
-        if(username === 'admin' && password === 'pass') {
+        if(username === 'admin' && password === '123456') {
             setIsAuthenticated(true)
             return true
         }else{

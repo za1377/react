@@ -45,7 +45,7 @@ function WelcomeComponent() {
     return(
         <div>
             <h1>Welcome to our application {username}</h1>
-            <div>Manage your todos list <Link to="/todos">Go here</Link></div>
+            <div>See the users list <Link to="/users">Go here</Link></div>
             <button className='btn btn-success m-3' onClick={callHello} >Call hello</button>
             <button className='btn btn-success m-3' onClick={callHelloBean} >Call hello Bean</button>
             <button className='btn btn-success m-3' onClick={callHelloName} >Call hello Zahra</button>

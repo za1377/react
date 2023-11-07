@@ -26,7 +26,7 @@ function HeaderComponent() {
                             <li className="nav-item fs-5">
                                 {
                                     authContext.isAuthenticated &&
-                                    <Link className="nav-link" to="/todos">Todos</Link>
+                                    <Link className="nav-link" to="/users">Users</Link>
                                 }
                             </li>
                         </ul>

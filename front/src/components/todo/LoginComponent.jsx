@@ -3,8 +3,8 @@ import { useNavigate} from 'react-router-dom'
 import {useAuth} from './security/AuthContext'
 
 function LoginComponent() {
-    const [username, setUsername] = useState("admin")
-    const [password, setPassword] = useState("123456")
+    const [username, setUsername] = useState("user")
+    const [password, setPassword] = useState("password")
 
     const [errorMessage, setErrorMessage] = useState(false)
 
@@ -21,8 +21,8 @@ function LoginComponent() {
         setPassword(event.target.value)
     }
 
-    function handelLogin() {
-        if(authContext.login(username, password)) {
+    async function handelLogin() {
+        if(await authContext.login(username, password)) {
             navigate(`/welcome/${username}`)
         }else{
             setErrorMessage(true)

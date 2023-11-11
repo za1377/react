@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { basicAuthCheck } from "../../api/HelloWorldApiService";
+import { apiClient } from "../../api/ApiClient";
 
 export const AuthContext = createContext()
 
@@ -12,18 +13,6 @@ export default function AuthProvider( {children} ) {
     const [username, setUsername] = useState(false)
     const [token, setToken] = useState(null)
 
-    // function login(username, password) {
-    //     if(username === 'admin' && password === '123456') {
-    //         setIsAuthenticated(true)
-    //         setUsername(username)
-    //         return true
-    //     }else{
-    //         setIsAuthenticated(false)
-    //         setUsername(null)
-    //         return false
-    //     }
-    // }
-
     async function login(username, password) {
         const batoken = 'Basic ' + window.btoa(username + ":" + password)
 
@@ -34,6 +23,14 @@ export default function AuthProvider( {children} ) {
                 setIsAuthenticated(true)
                 setUsername(username)
                 setToken(batoken)
+
+                apiClient.interceptors.request.use(
+                    (config) => {
+                        config.headers.Authorization = batoken
+                        return config
+                    }
+                )
+
                 return true
             }else{
                 logout()

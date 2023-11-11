@@ -8,14 +8,14 @@ function WelcomeComponent() {
     const [message, setMessage] = useState(null)
 
     function callHello() {
-        retrieveHelloWorld
+        retrieveHelloWorld()
         .then( (response) => successResponse(response) )
         .catch( (error) => errorResponse(error) )
         .finally( () => console.log("cleanup") )
     }
 
     function callHelloBean() {
-        retrieveHelloWorldBean
+        retrieveHelloWorldBean()
         .then( (response) => successResponseBean(response) )
         .catch( (error) => errorResponse(error) )
         .finally( () => console.log("cleanup") )

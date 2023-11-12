@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { basicAuthCheck } from "../../api/HelloWorldApiService";
+import { basicAuthCheck, jwtAuthCheck } from "../../api/Authenticate";
 import { apiClient } from "../../api/ApiClient";
 
 export const AuthContext = createContext()
@@ -13,20 +13,52 @@ export default function AuthProvider( {children} ) {
     const [username, setUsername] = useState(false)
     const [token, setToken] = useState(null)
 
+    // async function login(username, password) {
+    //     const batoken = 'Basic ' + window.btoa(username + ":" + password)
+
+    //     try{
+    //         const response = await basicAuthCheck(batoken);
+
+    //         if(response.status==200) {
+    //             setIsAuthenticated(true)
+    //             setUsername(username)
+    //             setToken(batoken)
+
+    //             apiClient.interceptors.request.use(
+    //                 (config) => {
+    //                     config.headers.Authorization = batoken
+    //                     return config
+    //                 }
+    //             )
+
+    //             return true
+    //         }else{
+    //             logout()
+    //             return false
+    //         }
+    //     } catch(error) {
+    //         logout()
+    //         return false
+    //     }
+
+    // }
+
     async function login(username, password) {
-        const batoken = 'Basic ' + window.btoa(username + ":" + password)
 
         try{
-            const response = await basicAuthCheck(batoken);
+            const response = await jwtAuthCheck(username, password);
 
             if(response.status==200) {
+
+                const jwtToken ='Bearer ' + response.data.token
+
                 setIsAuthenticated(true)
                 setUsername(username)
-                setToken(batoken)
+                setToken(jwtToken)
 
                 apiClient.interceptors.request.use(
                     (config) => {
-                        config.headers.Authorization = batoken
+                        config.headers.Authorization = jwtToken
                         return config
                     }
                 )
